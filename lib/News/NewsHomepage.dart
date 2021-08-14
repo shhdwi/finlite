@@ -25,7 +25,9 @@ class _NewsHomePageState extends State<NewsHomePage> {
                   itemCount: articles!.length,
                   itemBuilder: (context,index)=>customListTile(articles[index]));
             }
-            return Center(child: CircularProgressIndicator());
+            return Center(child: SpinKitCubeGrid(
+            color: Colors.blue,
+            size: 50.0,));
           },
         ),
       ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "567504010763",
+    "project_id": "finlite-2d9be",
+    "storage_bucket": "finlite-2d9be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567504010763:android:ee74e65825dd66d870510e",
+        "android_client_info": {
+          "package_name": "com.example.finlite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567504010763-bu4lf5f1qglu0idgtrnnnn2cd2eikusl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7_QP8ckwL1KauWre9zewfDD8rg8XWchs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567504010763-bu4lf5f1qglu0idgtrnnnn2cd2eikusl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

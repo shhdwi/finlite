@@ -33,6 +33,11 @@ dependencies:
   velocity_x: ^3.3.0
   get: ^4.3.8
   flutter_svg: ^0.22.0
+  sawo: ^0.1.2
+  cloud_firestore: ^2.4.0
+  firebase_core: ^1.4.0
+  firebase_storage: ^10.0.1
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:
@@ -52,9 +57,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/img.png
-  assets:
-     - assets/icons/bg.svg
-     - assets/icons/clock.svg
+    - assets/icons/bg.svg
+    - assets/icons/clock.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

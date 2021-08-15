@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
   Future<List<Coin>> fetchCoin() async {
     coinList = [];
     final response = await http.get(Uri.parse(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&sparkline=false'));
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'));
 
     if (response.statusCode == 200) {
       List<dynamic> values = [];
@@ -55,13 +55,13 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     fetchCoin();
-    Timer.periodic(Duration(seconds: 10), (timer) => fetchCoin());
+    Timer.periodic(Duration(seconds: 30), (timer) => fetchCoin());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return coinList.isNotEmpty?  Scaffold(
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
           backgroundColor: Colors.grey[300],
@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
               changePercentage: coinList[index].changePercentage.toDouble(),
             );
           },
-        ));
+        )): Center(child: CircularProgressIndicator(),);
   }
 }
 

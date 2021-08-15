@@ -10,26 +10,39 @@ const List sample_data = [
   {
     "id": 1,
     "question":
-    "Flutter is an open-source UI software development kit created by ______",
-    "options": ['Apple', 'Google', 'Facebook', 'Microsoft'],
-    "answer_index": 1,
+    "Who created Bitcoin?",
+    "options": ['Satoshi Nakamoto','Samsung','John Mcafee','China'],
+    "answer_index": 0,
   },
   {
     "id": 2,
-    "question": "When google release Flutter.",
-    "options": ['Jun 2017', 'Jun 2017', 'May 2017', 'May 2018'],
+    "question": "Where do you store your cryptocurrency?",
+    "options": ['Bank account','Floppy Disk','Wallet','In your pocket'],
     "answer_index": 2,
   },
   {
     "id": 3,
-    "question": "A memory location that holds a single letter or number.",
-    "options": ['Double', 'Int', 'Char', 'Word'],
-    "answer_index": 2,
+    "question": "What is a miner?",
+    "options": ['A type of blockchain','An algorithm that predicts the next part of the chain','A person doing calculations to verify a transaction','Computers that validate and process blockchain transactions'],
+
+    "answer_index": 3,
   },
   {
     "id": 4,
-    "question": "What command do you use to output data to the screen?",
-    "options": ['Cin', 'Count>>', 'Cout', 'Output>>'],
-    "answer_index": 2,
+    "question": "Where can you buy cryptocurrency?",
+    "options": [' A private transaction','An exchange','A Bitcoin ATM','All of the above'],
+    "answer_index": 3,
+  },
+  {
+    "id": 5,
+    "question": "What is a genesis block?",
+    "options": ['The first block of a Blockchain','A famous block that hardcoded a hash of the Book of Genesis onto the blockchain','The first block after each block halving','The 2nd transaction of a Blockchain'],
+    "answer_index": 1,
+  },
+  {
+    "id": 6,
+    "question": "What powers the Ethereum Virtual Machine?",
+    "options": ['Gas','Ether','Bitcoin','Block Rewards'],
+    "answer_index": 0,
   },
 ];

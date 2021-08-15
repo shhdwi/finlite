@@ -8,6 +8,7 @@ class CoinPage extends StatelessWidget {
   final Coin coin;
   final _formKey = GlobalKey<FormState>();
   final myController = TextEditingController();
+  final myController1 = TextEditingController();
 
   CoinPage({required this.coin})
       : assert(coin != null);
@@ -22,10 +23,43 @@ class CoinPage extends StatelessWidget {
           key: _formKey,
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.all(25),
-                child: Text(coin.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40, color: Colors.lightBlueAccent[300] ),
-                ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(2, 2),
+                            blurRadius: 4,
+                            spreadRadius: 1,
+                          ),
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: Offset(-2, -2),
+                            blurRadius: 4,
+                            spreadRadius: 1,
+                          ),
+                        ],
+                      ),
+                      height: 60,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.network(coin.imageUrl),
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    padding: EdgeInsets.all(25),
+                    child: Text(coin.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40, color: Colors.lightBlueAccent[300] ),
+                    ),
+                  ),
+                ],
               ),
           Padding(
             padding: const EdgeInsets.all(30.0),
@@ -56,14 +90,68 @@ class CoinPage extends StatelessWidget {
               GestureDetector(child: TextButton(onPressed: () async{
                 await SharedPreferenceHelper().getUserinfo().then((snap){
 
-                  Map<String,dynamic>  messageInfoMap = {coin.symbol:{"Amount": myController.text,"AvgPrice":coin.price}};
-                  holdings[coin.symbol]=messageInfoMap;
+                  double Moneyused =double.parse(myController.text) ;
+                  if(portfolio<Moneyused){
+                    print("not enough money");
+                  }
+                  else{
+                    holdings[coin.symbol]!["AvgPrice"]=(holdings[coin.symbol]!["AvgPrice"]*holdings[coin.symbol]!["Amount"]+Moneyused)/(holdings[coin.symbol]!["Amount"] +(Moneyused/coin.price));
+                    holdings[coin.symbol]!["Amount"]=(holdings[coin.symbol]!["Amount"] +(Moneyused/coin.price));
+                    portfolio-=Moneyused;
+                  }
+
+                  Map<String,dynamic>  messageInfoMap = {"coin": holdings};
                   print(holdings);
 
                   DatabaseMethods().addCoin( snap["email"], messageInfoMap);});
               },
-              child: Text("Buy")),),
-              GestureDetector(child: OutlineBtn(btnText: "Sell"), onTap: (){},),
+              child: Text("Buy",style: TextStyle(color: Colors.lightGreen))),),
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: TextFormField(
+                  controller: myController1,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      hintText: 'Enter Amount of ${coin.name}',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey, width: 32.0),
+                          borderRadius: BorderRadius.circular(5.0)
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                          borderRadius: BorderRadius.circular(5.0)
+                      )
+                  ),
+                ),
+              ),
+              GestureDetector(child: TextButton(child: Text("Sell", style: TextStyle(color: Colors.redAccent),) , onPressed: () async{
+                await SharedPreferenceHelper().getUserinfo().then((snap){
+
+                  double amount =double.parse(myController1.text) ;
+              if(amount>holdings[coin.symbol]!["Amount"]) {
+                   print("insufficient amount to sell");
+                  }
+                else {
+                holdings[coin.symbol]!["Amount"] = (holdings[coin.symbol]!["Amount"] - (amount));
+                portfolio += amount * coin.price;
+                if (holdings[coin.symbol]!["Amount"] == 0.00) {
+                  holdings[coin.symbol]!["AvgPrice"] = 0.0;
+                }
+              }
+
+
+
+                  Map<String,dynamic>  messageInfoMap = {"coin": holdings};
+                  print(holdings);
+
+                  DatabaseMethods().addCoin( snap["email"], messageInfoMap);});
+              },),)
 
 
             ],

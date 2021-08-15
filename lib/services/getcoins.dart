@@ -46,6 +46,7 @@ class _HomeState extends State<Home> {
           coinList;
         });
       }
+      print(coinList);
       return coinList;
     } else {
       throw Exception('Failed to load coins');
@@ -62,18 +63,18 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return coinList.isNotEmpty?  Scaffold(
-        backgroundColor: Colors.grey[300],
-        appBar: AppBar(
-          backgroundColor: Colors.grey[300],
-          title: Text(
-            'COINS',
-            style: TextStyle(
-              color: Colors.grey[900],
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+        backgroundColor: Colors.white,
+        // appBar: AppBar(
+        //   backgroundColor: Colors.grey[300],
+        //   title: Text(
+        //     'COINS',
+        //     style: TextStyle(
+        //       color: Colors.grey[900],
+        //       fontSize: 20,
+        //       fontWeight: FontWeight.bold,
+        //     ),
+        //   ),
+        // ),
         body: ListView.builder(
           scrollDirection: Axis.vertical,
           itemCount: coinList.length,

@@ -3,6 +3,7 @@ import 'package:finlite/database_coin/database.dart';
 import 'package:finlite/models/user_models.dart';
 import 'package:finlite/screens/display_page.dart';
 import 'package:finlite/services/getcoins.dart';
+import 'package:finlite/widgets/nav_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sawo/sawo.dart';
@@ -41,13 +42,14 @@ class _GetStartedState extends State<GetStarted> {
       SignOut();
 
       DatabaseMethods().createUser(user.identifier,userInfoMap);
-
-
-
-
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()
 
       ));
+
+
+
+
+
     });
   }
   @override
@@ -60,87 +62,93 @@ class _GetStartedState extends State<GetStarted> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Stack(
+        backgroundColor: Colors.blue[50],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
 
-          children: [
-            AnimatedContainer(
-              curve: Curves.easeIn,
-              duration: Duration(milliseconds: 400),
-              color: Colors.blue[50],
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-              Container(
+                children: [
+                  AnimatedContainer(
+                    curve: Curves.easeIn,
+                    duration: Duration(milliseconds: 400),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                    Container(
 
-              child: Column(
-              children: [
-                  GestureDetector(
-                  onTap: (){
-            setState(() {
-            });
-            },
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: AnimatedContainer(
-                  margin: EdgeInsets.only(top: 50),
-                  duration: Duration(milliseconds: 400),
-                  curve: Curves.easeIn,
-                  child: Center(child: Column(
+                    child: Column(
                     children: [
-                      Text("Hey There!",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-                      Text("Crypto to the Moon!",style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),)
-                    ],
-                  )),
+                        GestureDetector(
+                        onTap: (){
+                  setState(() {
+                  });
+                  },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: AnimatedContainer(
+                        margin: EdgeInsets.only(top: 50),
+                        duration: Duration(milliseconds: 400),
+                        curve: Curves.easeIn,
+                        child: Center(child: Column(
+                          children: [
+                            Text("Hey There!",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                            Text("Crypto to the Moon!",style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),)
+                          ],
+                        )),
 
-                ),
-              ),
-            ),
-          ],
-
-        ),
-        ),
-        Container(
-        padding: EdgeInsets.all(30),
-        child: AnimatedImage()
-        ),
-                     GestureDetector(
-                       onTap: (){
-                         sawo.signIn(
-                             context: context,
-                             identifierType: 'email',
-                             callback: payloadCallback);
-
-                       },
-                       child: Container(
-                         margin: EdgeInsets.only(bottom: 30),
-                         child: InkWell(
-
-                          child: AnimatedContainer(
-                            duration: Duration(milliseconds: 200),
-                            width: 250,
-                            height: 50,
-
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Get Started!",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                // fontWeight: FontWeight.bold,
-                              ),
-
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.blue[400],
-                                borderRadius: BorderRadius.circular(25)
-                            ),
-
-                          ),
+                      ),
                     ),
-                       ),
-                     ),
+                  ),
+                ],
 
-                  ]))]),
+              ),
+              ),
+              Container(
+              padding: EdgeInsets.all(30),
+              child: AnimatedImage()
+              ),
+                           GestureDetector(
+                             onTap: (){
+                               sawo.signIn(
+                                   context: context,
+                                   identifierType: 'email',
+                                   callback: payloadCallback);
+
+                             },
+                             child: Container(
+                               margin: EdgeInsets.only(bottom: 30),
+                               child: InkWell(
+
+                                child: AnimatedContainer(
+                                  duration: Duration(milliseconds: 200),
+                                  width: 250,
+                                  height: 50,
+
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "Get Started!",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      // fontWeight: FontWeight.bold,
+                                    ),
+
+                                  ),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blue[400],
+                                      borderRadius: BorderRadius.circular(25)
+                                  ),
+
+                                ),
+                          ),
+                             ),
+                           ),
+
+                        ]))]),
+            ],
+          ),
+        ),
       ),
     );
   }

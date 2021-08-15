@@ -18,7 +18,7 @@ class SharedPreferenceHelper {
    Future<bool> saveusermail(String email) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
-    return await preferences.setString(emailIdKey, jsonEncode(email));
+    return await preferences.setString(emailIdKey, email);
   }
 
    Future<bool> saveportfolio(String portfolio) async {

@@ -1,6 +1,7 @@
 import 'package:finlite/screens/coin_details.dart';
 import 'package:flutter/material.dart';
 
+import 'coindata_models.dart';
 import 'models/coindata_models.dart';
 
 class CoinCard extends StatelessWidget {
@@ -135,8 +136,8 @@ class CoinCard extends StatelessWidget {
                     ),
                     Text(
                       changePercentage.toDouble() < 0
-                          ? changePercentage.toDouble().toString() + '%'
-                          : '+' + changePercentage.toDouble().toString() + '%',
+                          ? changePercentage.toDouble().toString()
+                          : '+' + changePercentage.toDouble().toString(),
                       style: TextStyle(
                         color: changePercentage.toDouble() < 0
                             ? Colors.red

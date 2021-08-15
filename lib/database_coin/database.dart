@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finlite/Constants.dart';
 import 'package:finlite/database_coin/sharedprefs.dart';
+import 'package:flutter/material.dart';
 
 class DatabaseMethods{
 
@@ -51,15 +55,22 @@ class DatabaseMethods{
       var data = snapShot.data();
       SharedPreferenceHelper().saveportfolio(data!["portfolio"]);
       SharedPreferenceHelper().saveusermail(userId);
-      print("\n");
-      FirebaseFirestore.instance
-          .collection('holdings').doc(userId).collection("holdings")
-          .get()
-          .then((QuerySnapshot querySnapshot) {
-        querySnapshot.docs.forEach((doc) {
-          print(doc["Amount"]);
-          print("\n");
-        });
+
+
+
+
+
+
+
+      await FirebaseFirestore.instance
+          .collection("holdings")
+          .doc(userId)
+          .get().then((snapshot) async {
+
+        Map<String, Map<String,dynamic>> map =  Map<String, Map<String,dynamic>>.from(snapshot.data() as Map<String,dynamic>);
+        holdings = Map<String, Map<String,dynamic>>.from(map["coin"] as Map<String,dynamic>);
+        print("gg Holdings: ");
+        print(holdings);
       });
       // user already exists
       return true;

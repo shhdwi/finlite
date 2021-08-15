@@ -8,9 +8,9 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
-          SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -19,17 +19,19 @@ class WelcomeScreen extends StatelessWidget {
                 children: [
                   Spacer(flex: 2), //2/6
                   Text(
-                    "Let's Play Quiz,",
+                    "Let's Play Trivia!,",
                     style: Theme.of(context).textTheme.headline4?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: Colors.black, fontWeight: FontWeight.bold),
                   ),
-                  Text("Enter your informations below"),
+                  Text("Enter your information below"),
                   Spacer(), // 1/6
                   TextField(
+                    style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFF1C2341),
                       hintText: "Full Name",
+                      hintStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),

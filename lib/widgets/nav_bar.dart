@@ -4,6 +4,7 @@ import 'package:finlite/News/NewsHomepage.dart';
 import 'package:finlite/Quiz/Welcome_screen.dart';
 import 'package:finlite/Quiz/quiz-screen/Quiz-screen.dart';
 import 'package:finlite/portfolio_page.dart';
+import 'package:finlite/screens/leaderboard.dart';
 import 'package:finlite/services/getcoins.dart';
 import 'package:finlite/widgets/drawer.dart';
 import 'package:flutter/material.dart';
@@ -34,10 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
     NewsHomePage(),
     Home1(),
     WelcomeScreen(),
-
-
-
-
   ];
   PageController controller = PageController();
 
@@ -101,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icons.attach_money_outlined,
                     iconColor: Colors.black,
                     iconActiveColor: Colors.lightBlueAccent,
-                    text: 'Home',
+                    text: 'Market',
                     textColor: Colors.lightBlueAccent,
                     backgroundColor: Colors.lightBlueAccent.withOpacity(0.2),
                     iconSize: 24,
@@ -124,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icons.person,
                     iconColor: Colors.black,
                     iconActiveColor: Colors.lightBlueAccent,
-                    text: 'Sell',
+                    text: 'portfolio',
                     textColor: Colors.lightBlueAccent,
                     backgroundColor: Colors.lightBlueAccent.withOpacity(0.2),
                     iconSize: 24,
@@ -132,10 +129,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   GButton(
                     gap: gap,
-                    icon: Icons.quiz_outlined,
+                    icon: Icons.videogame_asset,
                     iconColor: Colors.black,
                     iconActiveColor: Colors.lightBlueAccent,
-                    text: "My Ads",
+                    text: "Trivia",
                     textColor: Colors.lightBlueAccent,
                     backgroundColor: Colors.lightBlueAccent.withOpacity(0.2),
                     iconSize: 24,

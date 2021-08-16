@@ -14,6 +14,26 @@ class DatabaseMethods{
         .doc(emailId)
         .set(messageInfoMap);
   }
+  Future getLeader() async {
+    DocumentSnapshot<Map<String, dynamic>> collection = await FirebaseFirestore.instance.collection('users').doc().get();
+    Map<dynamic, dynamic> list =collection.data() as Map<dynamic,dynamic>;
+    print(collection.runtimeType);
+    print(list);
+    return list;
+
+  }
+  Future<List<Map<String, dynamic>>> getData() async {
+    // Get docs from collection reference
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance.collection('users').get();
+
+    // Get data from docs and convert map to List
+    final _docData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    print(_docData);
+    return _docData;
+
+
+
+  }
 
 
 
@@ -59,6 +79,8 @@ class DatabaseMethods{
       SharedPreferenceHelper().saveportfolio(portfolio);
       SharedPreferenceHelper().saveusermail(userId);
       print(portfolio);
+      print("gg leaderboard");
+      getData();
 
 
 

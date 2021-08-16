@@ -5,6 +5,7 @@ import 'package:finlite/News/NewsHomepage.dart';
 import 'package:finlite/Quiz/Welcome_screen.dart';
 import 'package:finlite/Quiz/quiz-screen/Quiz-screen.dart';
 import 'package:finlite/database_coin/sharedprefs.dart';
+import 'package:finlite/screens/leaderboard.dart';
 import 'package:finlite/services/getcoins.dart';
 import 'package:finlite/widgets/nav_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,19 +84,6 @@ class MyDrawer extends StatelessWidget{
               onTap:(){},
               child: ListTile(
                 leading: Icon(
-                  CupertinoIcons.profile_circled,
-                  color: Colors.black45,
-                ),
-                title: Text("Profile"),
-
-
-
-              ),
-            ),
-            GestureDetector(
-              onTap:(){},
-              child: ListTile(
-                leading: Icon(
                   CupertinoIcons.heart,
                   color: Colors.redAccent,
                 ),
@@ -107,14 +95,14 @@ class MyDrawer extends StatelessWidget{
             ),
             GestureDetector(
               onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>WelcomeScreen()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LeaderBoard()));
               },
               child: ListTile(
                 leading: Icon(
                   CupertinoIcons.game_controller,
                   color: Colors.blue,
                 ),
-                title: Text("Play Trivia!"),
+                title: Text("Leaderboard"),
 
 
 

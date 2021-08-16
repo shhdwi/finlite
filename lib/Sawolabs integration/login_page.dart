@@ -11,6 +11,8 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Constants.dart';
+
 class GetStarted extends StatefulWidget {
 
   @override
@@ -37,7 +39,7 @@ class _GetStartedState extends State<GetStarted> {
       user = User.fromJson(jsonDecode(payload));
       print(user.userId);
       print(payload);
-      Map<String,dynamic> userInfoMap = {"email":user.identifier,"portfolio":"100000"};
+      Map<String,dynamic> userInfoMap = {"email":user.identifier,"portfolio":portfolio};
 
       SignOut();
 

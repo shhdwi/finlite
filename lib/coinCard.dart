@@ -39,14 +39,14 @@ class CoinCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                offset: Offset(4, 4),
-                blurRadius: 10,
+                offset: Offset(2, 2),
+                blurRadius: 2,
                 spreadRadius: 1,
               ),
               BoxShadow(
                 color: Colors.white,
                 offset: Offset(-2, -2),
-                blurRadius: 5,
+                blurRadius: 2,
                 spreadRadius: 1,
               ),
             ],
@@ -62,14 +62,14 @@ class CoinCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        offset: Offset(2, 2),
-                        blurRadius: 4,
+                        offset: Offset(1, 1),
+                        blurRadius: 2,
                         spreadRadius: 1,
                       ),
                       BoxShadow(
                         color: Colors.white,
-                        offset: Offset(-2, -2),
-                        blurRadius: 4,
+                        offset: Offset(-1, -1),
+                        blurRadius: 2,
                         spreadRadius: 1,
                       ),
                     ],

@@ -16,6 +16,7 @@ class DatabaseMethods{
   }
 
 
+
   Future addUser(
       String emailId, Map<String,dynamic> UserInfomap) async {
     return FirebaseFirestore.instance
@@ -53,11 +54,11 @@ class DatabaseMethods{
     if (snapShot.exists) {
       getUserInfo(userId);
       var data = snapShot.data();
-      SharedPreferenceHelper().saveportfolio(data!["portfolio"]);
+      print(data!["portfolio"].runtimeType);
+      portfolio=data["portfolio"];
+      SharedPreferenceHelper().saveportfolio(portfolio);
       SharedPreferenceHelper().saveusermail(userId);
-
-
-
+      print(portfolio);
 
 
 

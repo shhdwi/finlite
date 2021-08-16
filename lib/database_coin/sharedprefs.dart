@@ -21,10 +21,10 @@ class SharedPreferenceHelper {
     return await preferences.setString(emailIdKey, email);
   }
 
-   Future<bool> saveportfolio(String portfolio) async {
+   Future<bool> saveportfolio(double portfolio) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
-    return await preferences.setString(portfolioKey, portfolio);
+    return await preferences.setString(portfolioKey, portfolio.toString());
   }
 
 

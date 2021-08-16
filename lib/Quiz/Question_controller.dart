@@ -79,7 +79,8 @@ class QuestionController extends GetxController
     _correctAns = question.answer;
     _selectedAns = selectedIndex;
 
-    if (_correctAns == _selectedAns) _numOfCorrectAns++;
+    if (_correctAns == _selectedAns) {_numOfCorrectAns++;
+    correctanscount+=1;}
 
     // It will stop the counter
     _animationController.stop();
@@ -105,7 +106,7 @@ class QuestionController extends GetxController
       _animationController.forward().whenComplete(nextQuestion);
     } else {
       // Get package provide us simple way to naviigate another page
-      Get.to(ScoreScreen());
+      Get.off(ScoreScreen());
     }
   }
 

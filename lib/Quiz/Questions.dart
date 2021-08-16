@@ -5,7 +5,8 @@ class Question {
 
   Question({required this.id, required this.question, required this.answer, required this.options});
 }
-
+int correctanscount=0;
+int totalanscount=6;
 const List sample_data = [
   {
     "id": 1,
@@ -23,7 +24,7 @@ const List sample_data = [
   {
     "id": 3,
     "question": "What is a miner?",
-    "options": ['A type of blockchain','An algorithm that predicts the next part of the chain','A person doing calculations to verify a transaction','Computers that validate and process blockchain transactions'],
+    "options": ['A type of blockchain','An algorithm that predicts the\n next part of the chain','A person doing calculations \n  to verify a transaction','Computers that validate and\n  process blockchain transactions'],
 
     "answer_index": 3,
   },
@@ -36,8 +37,8 @@ const List sample_data = [
   {
     "id": 5,
     "question": "What is a genesis block?",
-    "options": ['The first block of a Blockchain','A famous block that hardcoded a hash of the Book of Genesis onto the blockchain','The first block after each block halving','The 2nd transaction of a Blockchain'],
-    "answer_index": 1,
+    "options": ['The first block of a Blockchain','A famous block that hardcoded a \n  hash of the Book of Genesis\n  onto the blockchain','The first block after each \n  block halving','The 2nd transaction of a Blockchain'],
+    "answer_index": 0,
   },
   {
     "id": 6,

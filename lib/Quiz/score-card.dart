@@ -1,3 +1,5 @@
+import 'package:finlite/Quiz/Questions.dart';
+import 'package:finlite/widgets/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:finlite/Quiz/constants.dart';
@@ -9,6 +11,15 @@ class ScoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     QuestionController _qnController = Get.put(QuestionController());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading:IconButton( icon: Icon(Icons.arrow_back),
+          onPressed: () {
+          correctanscount=0;
+
+          Navigator.pop(context);
+
+          },) ,),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -25,7 +36,7 @@ class ScoreScreen extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                "${_qnController.correctAns * 10}/${_qnController.questions.length * 10}",
+                "${correctanscount * 10}/${totalanscount* 10}",
                 style: Theme.of(context)
                     .textTheme
                     .headline4

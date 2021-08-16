@@ -41,6 +41,7 @@ dependencies:
   flutter_spinkit: ^5.0.0
   url_launcher: ^6.0.9
   google_nav_bar: ^5.0.5
+  sprintf: ^6.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:finlite/screens/coin_details.dart';
 import 'package:flutter/material.dart';
+import 'package:sprintf/sprintf.dart';
 
 import 'coindata_models.dart';
 import 'models/coindata_models.dart';
@@ -117,7 +118,7 @@ class CoinCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      price.toDouble().toString(),
+                     sprintf("%5.5f ",[price.toDouble()]), // price.toDouble().toString(),
                       style: TextStyle(
                         color: Colors.grey[900],
                         fontSize: 20,
@@ -126,8 +127,8 @@ class CoinCard extends StatelessWidget {
                     ),
                     Text(
                       change.toDouble() < 0
-                          ? change.toDouble().toString()
-                          : '+' + change.toDouble().toString(),
+                         ?sprintf("%5.5f ",[change.toDouble()]) // ? change.toDouble().toString()
+                         :sprintf("+%5.5f ",[change.toDouble()]), // : '+' + change.toDouble().toString(),
                       style: TextStyle(
                         color: change.toDouble() < 0 ? Colors.red : Colors.green,
                         fontSize: 18,
@@ -136,8 +137,8 @@ class CoinCard extends StatelessWidget {
                     ),
                     Text(
                       changePercentage.toDouble() < 0
-                          ? changePercentage.toDouble().toString()
-                          : '+' + changePercentage.toDouble().toString(),
+                          ?sprintf("%5.5f ",[changePercentage.toDouble()])// ? changePercentage.toDouble().toString()
+                          :sprintf("+%5.5f ",[changePercentage.toDouble()]),// : '+' + changePercentage.toDouble().toString(),
                       style: TextStyle(
                         color: changePercentage.toDouble() < 0
                             ? Colors.red

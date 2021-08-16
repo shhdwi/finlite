@@ -33,7 +33,7 @@ class CoinCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
         child: Container(
-          height: 100,
+          height: 125,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),

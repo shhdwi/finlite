@@ -3,6 +3,7 @@ import 'package:finlite/database_coin/database.dart';
 import 'package:finlite/database_coin/sharedprefs.dart';
 import 'package:finlite/models/coindata_models.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CoinPage extends StatelessWidget {
   final Coin coin;
@@ -90,9 +91,28 @@ class CoinPage extends StatelessWidget {
                     onPressed: () async {
                       await SharedPreferenceHelper().getUserinfo().then((snap) {
                         double Moneyused = double.parse(myController.text);
+                        double amtbought = Moneyused/coin.price;
                         if (portfolio < Moneyused) {
+                          Fluttertoast.showToast(
+                              msg: "Not Enough Money!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 3,
+                              backgroundColor: Colors.blueGrey,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );
                           print("not enough money");
                         } else {
+                          Fluttertoast.showToast(
+                              msg: "you just bought ${amtbought} ${coin.name}",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 3,
+                              backgroundColor: Colors.blueGrey,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );
                           holdings[coin.symbol]!["AvgPrice"] =
                               (holdings[coin.symbol]!["AvgPrice"] *
                                           holdings[coin.symbol]!["Amount"] +
@@ -114,6 +134,7 @@ class CoinPage extends StatelessWidget {
                             "portfolio": portfolio
                           };
                           DatabaseMethods().addUser(snap["email"], userInfoMap);
+                          Navigator.pop(context);
                         }
                       });
                     },
@@ -152,15 +173,39 @@ class CoinPage extends StatelessWidget {
                   onPressed: () async {
                     await SharedPreferenceHelper().getUserinfo().then((snap) {
                       double amount = double.parse(myController1.text);
+
                       if (amount > holdings[coin.symbol]!["Amount"]) {
+                        Fluttertoast.showToast(
+                            msg: "Insufficient amount of ${coin.symbol} to sell",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 3,
+                            backgroundColor: Colors.blueGrey,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );
                         print("insufficient amount to sell");
                       } else {
+                        Fluttertoast.showToast(
+                            msg: "you just sold ${amount} ${coin.name}",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 3,
+                            backgroundColor: Colors.blueGrey,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );
+
+
+
                         holdings[coin.symbol]!["Amount"] =
                             (holdings[coin.symbol]!["Amount"] - (amount));
                         portfolio += amount * coin.price;
                         if (holdings[coin.symbol]!["Amount"] == 0.00) {
                           holdings[coin.symbol]!["AvgPrice"] = 0.0;
                         }
+                        Navigator.pop(context);
+
                       }
 
                       Map<String, dynamic> messageInfoMap = {"coin": holdings};

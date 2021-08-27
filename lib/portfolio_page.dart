@@ -162,7 +162,7 @@ class _Home1State extends State<Home1> {
               imageUrl: coinList[index].imageUrl,
               price: (holdings[coinList[index].symbol]!["Amount"]),
               change: holdings[coinList[index].symbol]!["Amount"]*(coinList[index].price-holdings[coinList[index].symbol]!["AvgPrice"]) as double,
-              changePercentage: holdings[coinList[index].symbol]!["Amount"]*(holdings[coinList[index].symbol]!["AvgPrice"]) as double,
+              changePercentage: holdings[coinList[index].symbol]!["Amount"]*(coinList[index].price) as double,
             );
           },
         )): Center(child: SpinKitCubeGrid(size: 60,color: Colors.lightBlueAccent,));

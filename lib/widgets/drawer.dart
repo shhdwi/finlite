@@ -95,14 +95,14 @@ class MyDrawer extends StatelessWidget{
             ),
             GestureDetector(
               onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LeaderBoard()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaderBoard()));
               },
               child: ListTile(
                 leading: Icon(
                   CupertinoIcons.game_controller,
                   color: Colors.blue,
                 ),
-                title: Text("Leaderboard"),
+                title: Text("Friends"),
 
 
 

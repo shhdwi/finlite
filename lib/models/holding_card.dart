@@ -1,3 +1,4 @@
+import 'package:finlite/Constants.dart';
 import 'package:finlite/screens/coin_details.dart';
 import 'package:flutter/material.dart';
 import 'package:sprintf/sprintf.dart';
@@ -28,9 +29,7 @@ class CoinCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context) =>CoinPage(coin: coin,)));
-
-      },
+      onTap: (){},
       child: Padding(
         padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
         child: Container(
@@ -118,7 +117,7 @@ class CoinCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                     sprintf("%5.5f ",[price.toDouble()]), // price.toDouble().toString(),
+                     sprintf("Amt: %5.5f ",[price.toDouble()]), // price.toDouble().toString(),
                       style: TextStyle(
                         color: Colors.grey[900],
                         fontSize: 20,
@@ -127,24 +126,22 @@ class CoinCard extends StatelessWidget {
                     ),
                     Text(
                       change.toDouble() < 0
-                         ?sprintf("%5.5f ",[change.toDouble()]) // ? change.toDouble().toString()
-                         :sprintf("+%5.5f ",[change.toDouble()]), // : '+' + change.toDouble().toString(),
+                         ?sprintf("Pnl: %5.5f ",[change.toDouble()]) // ? change.toDouble().toString()
+                         :sprintf("Pnl: +%5.5f ",[change.toDouble()]), // : '+' + change.toDouble().toString(),
                       style: TextStyle(
                         color: change.toDouble() < 0 ? Colors.red : Colors.green,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      changePercentage.toDouble() < 0
-                          ?sprintf("%5.5f ",[changePercentage.toDouble()])// ? changePercentage.toDouble().toString()
-                          :sprintf("+%5.5f ",[changePercentage.toDouble()]),// : '+' + changePercentage.toDouble().toString(),
+                      changePercentage.toDouble() < holdings[symbol]!["Amount"]*holdings[symbol]!["AvgPrice"]
+                          ?sprintf("total: %5.5f ",[changePercentage.toDouble()])// ? changePercentage.toDouble().toString()
+                          :sprintf("total: %5.5f ",[changePercentage.toDouble()]),// : '+' + changePercentage.toDouble().toString(),
                       style: TextStyle(
-                        color: changePercentage.toDouble() < 0
+                        color: changePercentage.toDouble() < holdings[symbol]!["Amount"]*holdings[symbol]!["AvgPrice"]
                             ? Colors.red
                             : Colors.green,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
